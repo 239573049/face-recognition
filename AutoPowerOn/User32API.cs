@@ -17,6 +17,12 @@ namespace AutoPowerOn
             }
         }
 
+        public const uint WM_SYSCOMMAND = 0x0112;
+        public const uint SC_MONITORPOWER = 0xF170;
+        [DllImport("user32")]
+        public static extern IntPtr SendMessage(IntPtr hWnd, uint wMsg, uint wParam, int lParam);
+        [DllImport("user32.dll", EntryPoint = "GetDesktopWindow", CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern IntPtr GetDesktopWindow();
         [DllImport("user32.dll", EntryPoint = "EnumWindows", SetLastError = true)]
         public static extern bool EnumWindows(WNDENUMPROC lpEnumFunc, uint lParam);
 
